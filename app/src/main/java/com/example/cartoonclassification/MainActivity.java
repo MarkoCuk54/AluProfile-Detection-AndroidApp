@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     Button buclassify;
 
     TextView prediction;
-
+    Button btnCam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,17 @@ public class MainActivity extends AppCompatActivity {
         buclassify=(Button)findViewById(R.id.classify);
         prediction=(TextView)findViewById(R.id.predictions);
 
-
+btnCam = (Button) findViewById(R.id.btnCam);
+btnCam.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        try {
+            Intent intent = new Intent();
+            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivity(intent);
+        }catch (Exception e){ e.printStackTrace();}
+    }
+});
 
 
 
