@@ -246,10 +246,13 @@ public class MainActivity extends AppCompatActivity {
         barChart.setDrawGridBackground(false);
         barChart.animateY(2000);
 
+
         //Legend l = barChart.getLegend(); // Customize the ledgends
         //l.setTextSize(10f);
         //l.setFormSize(10f);
 //To set components of x axis
+
+
         XAxis xAxis = barChart.getXAxis();
         xAxis.setTextSize(13f);
         xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
@@ -297,22 +300,32 @@ public class MainActivity extends AppCompatActivity {
             barchart(mBarChart,barEntries,xAxisName);
             prediction.setText("Predictions:");
 
-
- //           }
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==12 && resultCode==RESULT_OK && data!=null) {
+/**  Old Code : Works onl with internal Storage :
+        if(requestCode==12 && resultCode==RESULT_OK) {
             imageuri = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
-            }}}
+            }} */
+        if(resultCode == RESULT_OK){
+            mIMageView.setImageURI(image_uri);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
+                imageView.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+ }
 }
 
