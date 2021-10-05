@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#046C91"
     tools:context="com.example.cartoonclassification.MainActivity">
 
 
@@ -12,13 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/image"
-        android:text="Emerus v 0.0.2 Alpha"
+        android:text="Designed by Emerus"
         android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textSize="10sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.207">
@@ -43,14 +44,15 @@
         android:layout_height="47dp"
         android:layout_below="@+id/image"
         android:layout_marginBottom="356dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/gradient_normal"
         android:text="Pokreni Cameru"
         android:textColor="#ffffff"
-        android:textSize="17sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <Button
         android:id="@+id/classify"
@@ -58,10 +60,10 @@
         android:layout_height="47dp"
         android:layout_below="@+id/image"
         android:layout_marginBottom="356dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/gradient_normal"
         android:text="Potraži Profil"
         android:textColor="#ffffff"
-        android:textSize="17sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -71,9 +73,9 @@
         android:id="@+id/chart"
         android:layout_width="390dp"
         android:layout_height="300dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classify" />
 
