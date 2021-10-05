@@ -1,14 +1,19 @@
 package com.example.cartoonclassification;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cartoonclassification.R;
 
@@ -75,8 +81,16 @@ public class MainActivity extends AppCompatActivity {
     Uri imageuri;
     Button buclassify;
 
+
+    private static final int PERMISSON_CODE = 1000;
+    private static final int IMAGE_CAPTUREW_CDOE = 1001;
+
     TextView prediction;
-    Button btnCam;
+    Button mCaptureBtn;
+    ImageView mIMageView;
+
+    Uri image_uri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,18 +100,26 @@ public class MainActivity extends AppCompatActivity {
         buclassify=(Button)findViewById(R.id.classify);
         prediction=(TextView)findViewById(R.id.predictions);
 
-btnCam = (Button) findViewById(R.id.btnCam);
-btnCam.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        try {
-            Intent intent = new Intent();
-            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivity(intent);
-        }catch (Exception e){ e.printStackTrace();}
-    }
-});
+        mIMageView = findViewById(R.id.image);
+        mCaptureBtn = findViewById(R.id.capture_image_btn);
 
+        mCaptureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permission, PERMISSON_CODE);
+                    }
+                    else{
+                            openCamera();
+                    }
+                }
+                else{
+                        openCamera();
+                }
+            }
+        });
 
 
 
@@ -147,11 +169,29 @@ btnCam.setOnClickListener(new View.OnClickListener() {
 
     }
 
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.TITLE, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
+    }
 
-
-
-
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSON_CODE:{
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    openCamera();
+                }
+                else{
+                    Toast.makeText(this, "Permission denied...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 
 
     private TensorImage loadImage(final Bitmap bitmap) {
@@ -266,15 +306,9 @@ btnCam.setOnClickListener(new View.OnClickListener() {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==12 && resultCode==RESULT_OK && data!=null) {
-            imageuri = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+       if(resultCode == RESULT_OK){
+           mIMageView.setImageURI(image_uri);
+       }
     }
 }
 

@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivitiy">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="316dp"
-        android:layout_height="290dp"
-        android:src="@drawable/emerus_splash"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/emerus_splash_1"
+        android:src="@drawable/emerus_splash_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
