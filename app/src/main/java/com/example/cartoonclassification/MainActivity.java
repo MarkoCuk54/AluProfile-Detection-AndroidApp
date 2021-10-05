@@ -306,26 +306,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-/**  Old Code : Works onl with internal Storage :
-        if(requestCode==12 && resultCode==RESULT_OK) {
-            imageuri = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }} */
-        if(resultCode == RESULT_OK){
-            mIMageView.setImageURI(image_uri);
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
-                imageView.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        try {
+            if(requestCode==12 && resultCode==RESULT_OK) {
+                imageuri = data.getData();
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
+                    imageView.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }}
+        } catch (Exception e) {
+            e.printStackTrace();
         }
- }
+        try {
+            if(resultCode == RESULT_OK){
+                mIMageView.setImageURI(image_uri);
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
+                    imageView.setImageBitmap(bitmap);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
 
