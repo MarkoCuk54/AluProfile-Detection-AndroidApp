@@ -306,9 +306,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-       if(resultCode == RESULT_OK){
-           mIMageView.setImageURI(image_uri);
-       }
-    }
+        if(requestCode==12 && resultCode==RESULT_OK && data!=null) {
+            imageuri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }}}
 }
 
