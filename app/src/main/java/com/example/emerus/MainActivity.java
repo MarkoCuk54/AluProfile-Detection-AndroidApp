@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -101,10 +102,9 @@ public class MainActivity extends AppCompatActivity {
         barChart.animateY(2000);
 
 
-        //Legend l = barChart.getLegend(); // Customize the ledgends
-        //l.setTextSize(10f);
-        //l.setFormSize(10f);
-//To set components of x axis
+        Legend l = barChart.getLegend(); // Customize the ledgends
+        l.setTextSize(10f);
+        l.setFormSize(10f);
 
 
         XAxis xAxis = barChart.getXAxis();
