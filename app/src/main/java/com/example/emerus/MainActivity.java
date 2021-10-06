@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         barData.setBarWidth(0.9f);
         barData.setValueTextSize(0f);
 
-        barChart.setBackgroundColor(Color.TRANSPARENT); //set whatever color you prefer
+
+        barChart.setBackgroundColor(Color.WHITE); //set whatever color you prefer
         barChart.setDrawGridBackground(false);
         barChart.animateY(2000);
 
@@ -277,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
                 xAxisName.add(label[i]);
             }
             barchart(mBarChart, barEntries, xAxisName);
-            prediction.setText("Predictions:");
+            prediction.setText("Rezultat:");
 
         }
     }
