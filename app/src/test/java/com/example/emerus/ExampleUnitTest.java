@@ -1,4 +1,4 @@
-package com.example.cartoonclassification;
+package com.example.emerus;
 
 import org.junit.Test;
 

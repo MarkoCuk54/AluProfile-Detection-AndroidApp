@@ -1,8 +1,4 @@
-package com.example.cartoonclassification;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.emerus;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,11 +15,20 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cartoonclassification.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -48,183 +53,31 @@ import java.util.List;
 import java.util.Map;
 
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-
-
-
 public class MainActivity extends AppCompatActivity {
 
-    protected Interpreter tflite;
-    private MappedByteBuffer tfliteModel;
-    private TensorImage inputImageBuffer;
-    private  int imageSizeX;
-    private  int imageSizeY;
-    private  TensorBuffer outputProbabilityBuffer;
-    private  TensorProcessor probabilityProcessor;
     private static final float IMAGE_MEAN = 0.0f;
     private static final float IMAGE_STD = 1.0f;
     private static final float PROBABILITY_MEAN = 0.0f;
     private static final float PROBABILITY_STD = 255.0f;
-    private Bitmap bitmap;
-    private List<String> labels;
-    private HorizontalBarChart mBarChart;
+    private static final int PERMISSON_CODE = 1000;
+    private static final int IMAGE_CAPTUREW_CDOE = 1001;
+    protected Interpreter tflite;
     ImageView imageView;
     Uri imageuri;
     Button buclassify;
-
-
-    private static final int PERMISSON_CODE = 1000;
-    private static final int IMAGE_CAPTUREW_CDOE = 1001;
-
     TextView prediction;
     Button mCaptureBtn;
     ImageView mIMageView;
-
     Uri image_uri;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        imageView=(ImageView)findViewById(R.id.image);
-        buclassify=(Button)findViewById(R.id.classify);
-        prediction=(TextView)findViewById(R.id.predictions);
-
-        mIMageView = findViewById(R.id.image);
-        mCaptureBtn = findViewById(R.id.capture_image_btn);
-
-        mCaptureBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
-                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permission, PERMISSON_CODE);
-                    }
-                    else{
-                            openCamera();
-                    }
-                }
-                else{
-                        openCamera();
-                }
-            }
-        });
-
-
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select Picture"),12);
-            }
-        });
-
-        try{
-            tflite=new Interpreter(loadmodelfile(MainActivity.this));
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        buclassify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int imageTensorIndex = 0;
-                int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
-                imageSizeY = imageShape[1];
-                imageSizeX = imageShape[2];
-                DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
-
-                int probabilityTensorIndex = 0;
-                int[] probabilityShape =
-                        tflite.getOutputTensor(probabilityTensorIndex).shape(); // {1, NUM_CLASSES}
-                DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
-
-                inputImageBuffer = new TensorImage(imageDataType);
-                outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
-                probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
-
-                inputImageBuffer = loadImage(bitmap);
-
-                tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
-                showresult();
-            }
-        });
-
-
-
-    }
-
-    private void openCamera() {
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.TITLE, "New Picture");
-        values.put(MediaStore.Images.Media.TITLE, "From the Camera");
-        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-        startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case PERMISSON_CODE:{
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    openCamera();
-                }
-                else{
-                    Toast.makeText(this, "Permission denied...", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
-
-
-    private TensorImage loadImage(final Bitmap bitmap) {
-        // Loads bitmap into a TensorImage.
-        inputImageBuffer.load(bitmap);
-
-        // Creates processor for the TensorImage.
-        int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
-        // TODO(b/143564309): Fuse ops inside ImageProcessor.
-        ImageProcessor imageProcessor =
-                new ImageProcessor.Builder()
-                        .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
-                        .add(new ResizeOp(imageSizeX, imageSizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
-                        .add(getPreprocessNormalizeOp())
-                        .build();
-        return imageProcessor.process(inputImageBuffer);
-    }
-
-    private MappedByteBuffer loadmodelfile(Activity activity) throws IOException {
-        AssetFileDescriptor fileDescriptor=activity.getAssets().openFd("model.tflite");
-        FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
-        FileChannel fileChannel=inputStream.getChannel();
-        long startoffset = fileDescriptor.getStartOffset();
-        long declaredLength=fileDescriptor.getDeclaredLength();
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY,startoffset,declaredLength);
-    }
-
-    private TensorOperator getPreprocessNormalizeOp() {
-        return new NormalizeOp(IMAGE_MEAN, IMAGE_STD);
-    }
-    private TensorOperator getPostprocessNormalizeOp(){
-        return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
-    }
+    private MappedByteBuffer tfliteModel;
+    private TensorImage inputImageBuffer;
+    private int imageSizeX;
+    private int imageSizeY;
+    private TensorBuffer outputProbabilityBuffer;
+    private TensorProcessor probabilityProcessor;
+    private Bitmap bitmap;
+    private List<String> labels;
+    private HorizontalBarChart mBarChart;
 
     public static void barchart(BarChart barChart, ArrayList<BarEntry> arrayList, final ArrayList<String> xAxisValues) {
         barChart.setDrawBarShadow(false);
@@ -235,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
         barChart.setDrawGridBackground(true);
         BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
-        barDataSet.setColors(new int[]{Color.parseColor("#03A9F4"), Color.parseColor("#FF9800"),
-        Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF")});
+        barDataSet.setColors(Color.parseColor("#03A9F4"), Color.parseColor("#FF9800"),
+                Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF"));
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
         barData.setBarWidth(0.9f);
@@ -263,18 +116,146 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        imageView = (ImageView) findViewById(R.id.image);
+        buclassify = (Button) findViewById(R.id.classify);
+        prediction = (TextView) findViewById(R.id.predictions);
 
-    private void showresult(){
+        mIMageView = findViewById(R.id.image);
+        mCaptureBtn = findViewById(R.id.capture_image_btn);
 
-        try{
-            labels = FileUtil.loadLabels(MainActivity.this,"labels.txt");
-        }catch (Exception e){
+        mCaptureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permission, PERMISSON_CODE);
+                    } else {
+                        openCamera();
+                    }
+                } else {
+                    openCamera();
+                }
+            }
+        });
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 12);
+            }
+        });
+
+        try {
+            tflite = new Interpreter(loadmodelfile(MainActivity.this));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        buclassify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int imageTensorIndex = 0;
+                int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
+                imageSizeY = imageShape[1];
+                imageSizeX = imageShape[2];
+                DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
+
+                int probabilityTensorIndex = 0;
+                int[] probabilityShape =
+                        tflite.getOutputTensor(probabilityTensorIndex).shape(); // {1, NUM_CLASSES}
+                DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
+
+                inputImageBuffer = new TensorImage(imageDataType);
+                outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
+                probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
+
+                inputImageBuffer = loadImage(bitmap);
+
+                tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
+                showresult();
+            }
+        });
+
+
+    }
+
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.TITLE, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSON_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openCamera();
+                } else {
+                    Toast.makeText(this, "Permission denied...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    private TensorImage loadImage(final Bitmap bitmap) {
+        // Loads bitmap into a TensorImage.
+        inputImageBuffer.load(bitmap);
+
+        // Creates processor for the TensorImage.
+        int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
+        // TODO(b/143564309): Fuse ops inside ImageProcessor.
+        ImageProcessor imageProcessor =
+                new ImageProcessor.Builder()
+                        .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
+                        .add(new ResizeOp(imageSizeX, imageSizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
+                        .add(getPreprocessNormalizeOp())
+                        .build();
+        return imageProcessor.process(inputImageBuffer);
+    }
+
+    private MappedByteBuffer loadmodelfile(Activity activity) throws IOException {
+        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd("model.tflite");
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startoffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startoffset, declaredLength);
+    }
+
+    private TensorOperator getPreprocessNormalizeOp() {
+        return new NormalizeOp(IMAGE_MEAN, IMAGE_STD);
+    }
+
+    private TensorOperator getPostprocessNormalizeOp() {
+        return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
+    }
+
+    private void showresult() {
+
+        try {
+            labels = FileUtil.loadLabels(MainActivity.this, "labels.txt");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Map<String, Float> labeledProbability =
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
                         .getMapWithFloatValue();
-        float maxValueInMap =(Collections.max(labeledProbability.values()));
+        float maxValueInMap = (Collections.max(labeledProbability.values()));
 
         for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
             //if (entry.getValue()==maxValueInMap) {
@@ -286,18 +267,16 @@ public class MainActivity extends AppCompatActivity {
             mBarChart.getAxisLeft().setDrawGridLines(false);
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
             ArrayList<BarEntry> barEntries = new ArrayList<>();
-            for(int i=0; i<label_probability.length; i++)
-            {
-                barEntries.add(new BarEntry(i, label_probability[i]*100));
+            for (int i = 0; i < label_probability.length; i++) {
+                barEntries.add(new BarEntry(i, label_probability[i] * 100));
             }
 
-        // TO ADD THE VALUES IN X-AXIS
+            // TO ADD THE VALUES IN X-AXIS
             ArrayList<String> xAxisName = new ArrayList<>();
-            for(int i=0;i<label.length; i++)
-            {
+            for (int i = 0; i < label.length; i++) {
                 xAxisName.add(label[i]);
             }
-            barchart(mBarChart,barEntries,xAxisName);
+            barchart(mBarChart, barEntries, xAxisName);
             prediction.setText("Predictions:");
 
         }
@@ -307,19 +286,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            if(requestCode==12 && resultCode==RESULT_OK) {
+            if (requestCode == 12 && resultCode == RESULT_OK) {
                 imageuri = data.getData();
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
                     imageView.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }}
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            if(resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 mIMageView.setImageURI(image_uri);
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);

@@ -1,4 +1,4 @@
-package com.example.cartoonclassification;
+package com.example.emerus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+
+import com.example.emerus.R;
 
 public class SplashActivitiy extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class SplashActivitiy extends AppCompatActivity {
                         sleep(150);
                         delay = delay + 100;
                     }
-                    startActivity(new Intent(SplashActivitiy.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivitiy.this, Login.class));
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
