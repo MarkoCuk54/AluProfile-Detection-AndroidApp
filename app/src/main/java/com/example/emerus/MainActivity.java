@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         barChart.setDrawValueAboveBar(true);
         barChart.setMaxVisibleValueCount(25);
         barChart.setPinchZoom(true);
-
         barChart.setDrawGridBackground(true);
         BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
         barDataSet.setColors(Color.parseColor("#03A9F4"), Color.parseColor("#FF9800"),
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
         barData.setBarWidth(0.9f);
-        barData.setValueTextSize(0f);
+        barData.setValueTextSize(10f);
 
 
         barChart.setBackgroundColor(Color.WHITE); //set whatever color you prefer

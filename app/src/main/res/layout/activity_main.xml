@@ -17,8 +17,9 @@
         android:textColor="#03A9F4"
         android:textSize="10sp"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="5dp">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="2dp">
 
     </TextView>
 
@@ -73,7 +74,7 @@
         android:layout_height="300dp"
         android:layout_marginTop="28dp"
         android:alpha="0.75"
-        android:background="@color/white"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
