@@ -1,6 +1,7 @@
 package com.example.emerus;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
     private TensorProcessor probabilityProcessor;
     private Bitmap bitmap;
     private List<String> labels;
-    private HorizontalBarChart mBarChart;
 
     public static void barchart(BarChart barChart, ArrayList<BarEntry> arrayList, final ArrayList<String> xAxisValues) {
         barChart.setDrawBarShadow(false);
@@ -225,8 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Creates processor for the TensorImage.
         int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
-        // TODO(b/143564309): Fuse ops inside ImageProcessor.
-        ImageProcessor imageProcessor =
+         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
                         .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
                         .add(new ResizeOp(imageSizeX, imageSizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
@@ -252,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
         return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
     }
 
+    @SuppressLint("ResourceAsColor")
     private void showresult() {
 
         try {
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
             String[] label = labeledProbability.keySet().toArray(new String[0]);
             Float[] label_probability = labeledProbability.values().toArray(new Float[0]);
 
-            mBarChart = findViewById(R.id.chart);
+            HorizontalBarChart mBarChart = findViewById(R.id.chart);
             mBarChart.getXAxis().setDrawGridLines(false);
             mBarChart.getAxisLeft().setDrawGridLines(false);
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
@@ -284,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 xAxisName.add(label[i]);
             }
             barchart(mBarChart, barEntries, xAxisName);
+            prediction.setTextColor(Color.parseColor("#606060"));
             prediction.setText("Rezultat:");
 
         }
