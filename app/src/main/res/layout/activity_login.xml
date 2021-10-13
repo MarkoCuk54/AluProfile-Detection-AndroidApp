@@ -72,5 +72,23 @@
         android:textSize="18dp"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/supportbtn"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/password"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/gradient_normal"
+        android:text="Support"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>
