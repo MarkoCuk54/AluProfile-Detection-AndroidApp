@@ -18,6 +18,23 @@
         android:layout_marginTop="173dp"
         android:text="Support Site"
         android:textColor="@color/white"
-        android:textSize="25dp"
-    />
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/nazadbtn"
+        android:layout_width="85dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/password"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="314dp"
+        android:background="@drawable/nazad"
+        android:text="Nazad"
+        android:textColor="#ffffff"
+        android:textSize="14dp"
+        android:textStyle="bold"
+
+
 </RelativeLayout>
