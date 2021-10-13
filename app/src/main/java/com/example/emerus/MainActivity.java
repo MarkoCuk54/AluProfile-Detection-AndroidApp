@@ -81,24 +81,25 @@ public class MainActivity extends AppCompatActivity {
     private List<String> labels;
 
     public static void barchart(BarChart barChart, ArrayList<BarEntry> arrayList, final ArrayList<String> xAxisValues) {
-        barChart.setDrawBarShadow(false);
+        barChart.setDrawBarShadow(true);
         barChart.setFitBars(true);
         barChart.setDrawValueAboveBar(true);
         barChart.setMaxVisibleValueCount(25);
         barChart.setPinchZoom(true);
         barChart.setDrawGridBackground(true);
-        BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
-        barDataSet.setColors(Color.parseColor("#03A9F4"), Color.parseColor("#FF9800"),
-                Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF"));
+
+        BarDataSet barDataSet = new BarDataSet(arrayList, "Profil");
+        barDataSet.setColors(Color.parseColor("#046c91"), Color.parseColor("#5fcccc"),
+                Color.parseColor("#046c91"), Color.parseColor("#5fcccc"), Color.parseColor("#0376FF"));
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
-        barData.setBarWidth(0.9f);
-        barData.setValueTextSize(10f);
+        barData.setBarWidth(0.29f);
+        barData.setValueTextSize(14f);
 
 
         barChart.setBackgroundColor(Color.WHITE); //set whatever color you prefer
         barChart.setDrawGridBackground(false);
-        barChart.animateY(2000);
+        barChart.animateY(2500);
 
 
         Legend l = barChart.getLegend(); // Customize the ledgends
@@ -107,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setTextSize(13f);
-        xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
+        xAxis.setTextSize(14f);
+        xAxis.setPosition(XAxis.XAxisPosition.TOP);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValues));
-        xAxis.setDrawGridLines(false);
+        xAxis.setDrawGridLines(true);
+
 
         barChart.setData(barData);
 
@@ -283,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                 xAxisName.add(label[i]);
             }
             barchart(mBarChart, barEntries, xAxisName);
-            prediction.setTextColor(Color.parseColor("#606060"));
+            prediction.setTextColor(Color.parseColor("#ffffff"));
             prediction.setText("Rezultat:");
 
         }
