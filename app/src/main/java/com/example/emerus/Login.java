@@ -30,9 +30,9 @@ public class Login extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals("admin") && password.getText().toString().equals("emerus")){
+                if(username.getText().toString().equals("admin") && password.getText().toString().equals("emerus")  || username.getText().toString().equals("Marko") && password.getText().toString().equals("emerus") || username.getText().toString().equals("Mario") && password.getText().toString().equals("emerus") ){
                     //correct
-                    Toast.makeText(Login.this,"Uspješno Logiran",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Dobrodošli" + username.getText() + ".",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Login.this, MainActivity.class));
 
                 }else
