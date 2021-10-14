@@ -21,20 +21,21 @@
         android:textSize="25dp" />
 
     <Button
-        android:id="@+id/nazadbtn"
-        android:layout_width="85dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/password"
+        android:id="@+id/backbtn"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="314dp"
+        android:layout_marginEnd="337dp"
         android:background="@drawable/nazad"
-        android:text="Nazad"
+        android:text="@string/nazad"
         android:textColor="#ffffff"
         android:textSize="14dp"
-        android:textStyle="bold"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
