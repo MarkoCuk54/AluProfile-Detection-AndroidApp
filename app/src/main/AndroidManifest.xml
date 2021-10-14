@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.emerus">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <uses-feature
         android:name="android.hardware.camera.any"
@@ -13,7 +15,6 @@
         android:required="false" />
 
     <application
-        android:allowBackup="true"
         android:icon="@drawable/emerus"
         android:label="Emerus"
         android:roundIcon="@mipmap/ic_launcher_round"

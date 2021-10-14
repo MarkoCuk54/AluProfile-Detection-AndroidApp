@@ -128,6 +128,18 @@ public class MainActivity extends AppCompatActivity {
 
         mIMageView = findViewById(R.id.image);
         mCaptureBtn = findViewById(R.id.capture_image_btn);
+        View textview = findViewById(R.id.Designed);
+
+        
+        // Open Browser after Clicking on "Designed by Emerus" and open the Emerus Site on the browser.
+        textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("http://www.emerus.eu"));
+                startActivity(browserIntent);
+            }
+        });
 
         mCaptureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
