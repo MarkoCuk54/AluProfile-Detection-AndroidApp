@@ -25,6 +25,9 @@
             android:name=".Login"
             android:exported="true" />
         <activity
+            android:name=".Contact"
+            android:exported="true" />
+        <activity
             android:name=".SplashActivitiy"
             android:exported="true">
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"

@@ -17,11 +17,11 @@ public class Support extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         setContentView(R.layout.activity_support);
 
-        Button backbtn = findViewById(R.id.backbtn);
-         backbtn.setOnClickListener(new View.OnClickListener() {
+        Button contactbtn = findViewById(R.id.contactbtn);
+        contactbtn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(Support.this, Login.class)) ;
+                 startActivity(new Intent(Support.this, Contact.class)) ;
 
              }
          });

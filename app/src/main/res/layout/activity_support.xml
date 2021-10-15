@@ -115,7 +115,7 @@
         android:background="@android:color/white" />
 
     <Button
-        android:id="@+id/loginbtn"
+        android:id="@+id/contactbtn"
         android:layout_width="145dp"
         android:layout_height="48dp"
         android:layout_below="@+id/Designed1"
