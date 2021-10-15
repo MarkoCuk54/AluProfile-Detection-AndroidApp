@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 Color.parseColor("#046c91"), Color.parseColor("#5fcccc"), Color.parseColor("#0376FF"));
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
-        barData.setBarWidth(0.29f);
+        barData.setBarWidth(0.9f);
         barData.setValueTextSize(14f);
 
 
