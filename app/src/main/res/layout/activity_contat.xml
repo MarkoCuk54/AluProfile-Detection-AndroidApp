@@ -5,14 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="70dp"
+    android:layout_marginTop="0dp"
+    android:background="@drawable/login_background"
     tools:context=".Contact">
+
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/gradient_normal"
+        android:gravity="center"
+        android:text="Kontakt"
+        android:textColor="@color/white"
+        android:textSize="35dp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="mario.tomic@emerus.eu ; marko.cuk@emerus.eu"
         android:enabled="false"
         android:padding="10dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_marginTop="80dp"
 
         />
     <EditText
@@ -23,20 +43,34 @@
         android:padding="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Poruka"
         android:maxLines="4"
+        android:shadowColor="@color/white"
         android:padding="10dp"
         android:id="@+id/email_message"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        />
+        android:textColorHint="@color/white"
+        android:textColor="@color/white" />
+
     <Button
+        android:id="@+id/email_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dalje"
-        android:id="@+id/email_send"/>
+        android:layout_marginLeft="114dp"
+        android:layout_marginRight="114dp"
+        android:alpha="0.9"
+        android:background="@drawable/gradient_normal"
+        android:text="DALJE"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:layout_marginTop="40dp"/>
+
+
 </LinearLayout>
