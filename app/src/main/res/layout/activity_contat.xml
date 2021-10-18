@@ -39,7 +39,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Predmet:"
+        android:hint="Predmet"
         android:id="@+id/email_subject"
         android:padding="10dp"
         android:layout_marginTop="10dp"
@@ -51,7 +51,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Poruka:"
+        android:hint="Poruka"
         android:maxLines="4"
         android:shadowColor="@color/white"
         android:padding="10dp"
