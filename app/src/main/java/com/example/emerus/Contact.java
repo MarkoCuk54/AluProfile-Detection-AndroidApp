@@ -24,14 +24,14 @@ package com.example.emerus;
                 public void onClick(View v) {
                     String subject = et_subject.getText().toString().trim();
                     String message = et_message.getText().toString().trim();
-                    String email = "mario.tomic@emerus.eu ; marko.cuk@emerus.eu";
+                    String email = "mario.tomic@emerus.eu";
                     if(subject.isEmpty())
                     {
-                        Toast.makeText(Contact.this, "Molimo upišite predmet", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Contact.this, "Molimo upišite predmet.", Toast.LENGTH_SHORT).show();
                     }
                     else if(message.isEmpty())
                     {
-                        Toast.makeText(Contact.this, "Molimo upišite poruku", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Contact.this, "Molimo upišite poruku.", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
