@@ -45,6 +45,7 @@
         android:layout_marginBottom="10dp"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
+        android:textStyle="bold"
         />
     <EditText
         android:layout_width="match_parent"
@@ -57,7 +58,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textColorHint="@color/white"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/email_send"
@@ -70,7 +72,8 @@
         android:text="DALJE"
         android:textColor="#ffffff"
         android:textSize="18dp"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"/>
 
 
 </LinearLayout>
