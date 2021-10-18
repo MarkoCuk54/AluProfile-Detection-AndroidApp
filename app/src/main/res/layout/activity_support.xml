@@ -19,7 +19,6 @@
         android:background="@drawable/gradient_normal"
         android:gravity="center"
         android:text="Tehnička podrška"
-
         android:textColor="@color/white"
         android:textSize="35dp" />
 
@@ -38,7 +37,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Designed"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintVertical_bias="0.113"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/Designed"
@@ -123,18 +123,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-
         android:layout_marginStart="133dp"
         android:layout_marginTop="608dp"
         android:layout_marginEnd="131dp"
-
-
         android:alpha="0.9"
         android:background="@drawable/gradient_normal"
         android:text="KONTAKT"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:textStyle="bold" />
-
 
 </RelativeLayout>
