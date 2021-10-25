@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imageView = (ImageView) findViewById(R.id.image);
+        Button pronađi = (Button) findViewById(R.id.capture_image_btn1);
         buclassify = (Button) findViewById(R.id.classify);
         prediction = (TextView) findViewById(R.id.predictions);
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        pronađi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();

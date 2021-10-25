@@ -14,20 +14,20 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/image"
         android:textColor="#03A9F4"
-        android:textSize="10sp"
+        android:textSize="14sp"
         android:textStyle="italic"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="2dp"
         android:autoLink="web"
-        android:text="Designed by Emerus">
+        android:text="Designed by Emerus" >
 
     </TextView>
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="232dp"
-        android:layout_height="220dp"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:src="@drawable/emerus_splash_2"
         app:layout_constraintBottom_toTopOf="@+id/classify"
@@ -43,40 +43,58 @@
         android:layout_width="145dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
-        android:layout_marginBottom="380dp"
+        android:layout_marginBottom="424dp"
         android:alpha="0.9"
         android:background="@drawable/gradient_normal_1"
         android:text="Pokreni Kameru"
         android:textColor="#ffffff"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <Button
-        android:id="@+id/classify"
+        android:id="@+id/capture_image_btn1"
         android:layout_width="145dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
-        android:layout_marginBottom="380dp"
+        android:layout_marginBottom="424dp"
         android:alpha="0.9"
         android:background="@drawable/gradient_normal"
-        android:text="Potraži Profil"
+        android:text="Pronađi sliku"
         android:textColor="#ffffff"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/classify"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/image"
+        android:layout_marginBottom="352dp"
+        android:alpha="0.9"
+        android:background="@drawable/okvir"
+        android:text="Potraži Profil"
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/chart"
         android:layout_width="390dp"
         android:layout_height="300dp"
-        android:layout_marginTop="64dp"
-        android:alpha="0.75"
+        android:layout_marginTop="36dp"
+        android:alpha="0.7"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
