@@ -8,13 +8,14 @@
     tools:context="com.example.emerus.MainActivity">
 
 
+
     <TextView
         android:id="@+id/Designed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/image"
         android:textColor="#03A9F4"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="italic"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="3dp"
@@ -40,46 +41,51 @@
 
     <Button
         android:id="@+id/capture_image_btn"
-        android:layout_width="145dp"
+        android:layout_width="170dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
         android:layout_marginBottom="424dp"
         android:alpha="0.9"
         android:background="@drawable/gradient_normal_1"
+        android:drawableLeft="@drawable/kamera4"
         android:text="Pokreni Kameru"
         android:textColor="#ffffff"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/capture_image_btn1"
-        android:layout_width="145dp"
+        android:layout_width="165dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
         android:layout_marginBottom="424dp"
         android:alpha="0.9"
         android:background="@drawable/gradient_normal"
+        android:drawableLeft="@drawable/slike2"
+        android:drawablePadding="-10dp"
         android:text="Pronađi sliku"
+
         android:textColor="#ffffff"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/classify"
-        android:layout_width="155dp"
+        android:layout_width="165dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
         android:layout_marginBottom="352dp"
         android:alpha="0.9"
         android:background="@drawable/okvir"
+        android:drawableLeft="@drawable/search2"
         android:text="Potraži Profil"
         android:textColor="#ffffff"
         android:textSize="13sp"
@@ -87,7 +93,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        />
+
+
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/chart"
@@ -115,5 +126,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classify"
         app:layout_constraintVertical_bias="0.621" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
