@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,14 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -80,43 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
 
-    public static void barchart(BarChart barChart, ArrayList<BarEntry> arrayList, final ArrayList<String> xAxisValues) {
-        barChart.setDrawBarShadow(true);
-        barChart.setFitBars(true);
-        barChart.setDrawValueAboveBar(true);
-        barChart.setMaxVisibleValueCount(25);
-        barChart.setPinchZoom(true);
-        barChart.setDrawGridBackground(true);
 
-        BarDataSet barDataSet = new BarDataSet(arrayList, "Profil");
-        barDataSet.setColors(Color.parseColor("#046c91"), Color.parseColor("#5fcccc"),
-                Color.parseColor("#046c91"), Color.parseColor("#5fcccc"), Color.parseColor("#0376FF"));
-        //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        BarData barData = new BarData(barDataSet);
-        barData.setBarWidth(0.9f);
-        barData.setValueTextSize(14f);
-
-
-        barChart.setBackgroundColor(Color.WHITE); //set whatever color you prefer
-        barChart.setDrawGridBackground(false);
-        barChart.animateY(2500);
-
-
-        Legend l = barChart.getLegend(); // Customize the ledgends
-        l.setTextSize(10f);
-        l.setFormSize(10f);
-
-
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setTextSize(14f);
-        xAxis.setPosition(XAxis.XAxisPosition.TOP);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValues));
-        xAxis.setDrawGridLines(true);
-
-
-        barChart.setData(barData);
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.image);
         Button pronađi = (Button) findViewById(R.id.capture_image_btn1);
         buclassify = (Button) findViewById(R.id.classify);
-        prediction = (TextView) findViewById(R.id.predictions);
 
         mIMageView = findViewById(R.id.image);
         mCaptureBtn = findViewById(R.id.capture_image_btn);
         View textview = findViewById(R.id.Designed);
 
-        
+
         // Open Browser after Clicking on "Designed by Emerus" and open the Emerus Site on the browser.
         textview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,6 +229,9 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceAsColor")
     private void showresult() {
+        TextView result = (TextView)findViewById(R.id.result);
+        TextView postotak = (TextView) findViewById(R.id.postotak);
+
 
         try {
             labels = FileUtil.loadLabels(MainActivity.this, "labels.txt");
@@ -291,28 +248,26 @@ public class MainActivity extends AppCompatActivity {
             String[] label = labeledProbability.keySet().toArray(new String[0]);
             Float[] label_probability = labeledProbability.values().toArray(new Float[0]);
 
-            HorizontalBarChart mBarChart = findViewById(R.id.chart);
-            mBarChart.getXAxis().setDrawGridLines(false);
-            mBarChart.getAxisLeft().setDrawGridLines(false);
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
-            ArrayList<BarEntry> barEntries = new ArrayList<>();
+            int barEntries = 0;
             for (int i = 0; i < label_probability.length; i++) {
-                if (label_probability[i] == maxValueInMap) {
-                    barEntries.add(new BarEntry(i, label_probability[i] * 100));
-
-                }
+                if (label_probability[i] == maxValueInMap) barEntries = (int) (label_probability[i] * 100);
             }
 
             // TO ADD THE VALUES IN X-AXIS
-            ArrayList<String> xAxisName = new ArrayList<>();
+            ;
+            String xAxisName = "";
             for (int i = 0; i < label.length; i++) {
                 if(label_probability[i] == maxValueInMap){
-                xAxisName.add(label[i]);
+                xAxisName = label[i];
             }}
-            barchart(mBarChart, barEntries, xAxisName);
-            prediction.setTextColor(Color.parseColor("#ffffff"));
-            prediction.setText("Rezultat:");
 
+            result.setText(xAxisName);
+            postotak.setText(String.valueOf(barEntries) + "%");
+
+
+            System.out.println(xAxisName);
+            System.out.println(barEntries + " %");
         }
     }
 
