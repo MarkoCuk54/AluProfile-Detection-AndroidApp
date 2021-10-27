@@ -25,6 +25,7 @@
 
     </TextView>
 
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="260dp"
@@ -33,56 +34,17 @@
         android:src="@drawable/emerus_splash_2"
         app:layout_constraintBottom_toTopOf="@+id/classify"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Designed"
-        app:layout_constraintVertical_bias="0.113" />
-
-
-    <Button
-        android:id="@+id/capture_image_btn"
-        android:layout_width="170dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/image"
-        android:layout_marginBottom="424dp"
-        android:alpha="0.9"
-        android:background="@drawable/gradient_normal_1"
-        android:drawableLeft="@drawable/camera16"
-        android:text="Pokreni Kameru"
-        android:textColor="#ffffff"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/capture_image_btn1"
-        android:layout_width="165dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/image"
-        android:layout_marginBottom="424dp"
-        android:alpha="0.9"
-        android:background="@drawable/gradient_normal"
-        android:drawableLeft="@drawable/gallery11"
-        android:drawablePadding="-10dp"
-        android:text="Pronađi sliku"
-
-        android:textColor="#ffffff"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/classify"
         android:layout_width="165dp"
         android:layout_height="48dp"
         android:layout_below="@+id/image"
-        android:layout_marginBottom="352dp"
+        android:layout_marginBottom="300dp"
         android:alpha="0.9"
         android:background="@drawable/okvir"
         android:drawableLeft="@drawable/search10"
@@ -92,39 +54,85 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/capture_image_btn"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/image"
+        android:layout_marginBottom="376dp"
+        android:alpha="0.9"
+        android:background="@drawable/gradient_normal_1"
+        android:drawableLeft="@drawable/camera16"
+        android:text="Pokreni Kameru"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        />
+    <Button
+        android:id="@+id/capture_image_btn1"
+        android:layout_width="165dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/image"
+        android:layout_marginBottom="376dp"
+        android:alpha="0.9"
+        android:background="@drawable/gradient_normal"
+        android:drawableLeft="@drawable/gallery11"
+        android:drawablePadding="-10dp"
+        android:text="Pronađi sliku"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="146dp"
-        android:layout_height="62dp"
-        android:text="Resultat"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Rezultat:"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="22dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classify"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintVertical_bias="0.325" />
 
     <TextView
         android:id="@+id/postotak"
-        android:layout_width="146dp"
-        android:layout_height="62dp"
+        android:layout_width="47dp"
+        android:layout_height="31dp"
         android:text="Test"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="22dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toEndOf="@+id/result"
         app:layout_constraintTop_toBottomOf="@+id/classify"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintVertical_bias="0.327" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/result"
+        app:layout_constraintTop_toBottomOf="@+id/classify"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
