@@ -98,35 +98,33 @@
 
         />
 
-
-
-    <com.github.mikephil.charting.charts.HorizontalBarChart
-        android:id="@+id/chart"
-        android:layout_width="390dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="36dp"
-        android:alpha="0.7"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/classify" />
-
     <TextView
-        android:id="@+id/predictions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/chart"
+        android:id="@+id/result"
+        android:layout_width="146dp"
+        android:layout_height="62dp"
+        android:text="Resultat"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classify"
-        app:layout_constraintVertical_bias="0.621" />
+        app:layout_constraintVertical_bias="0.486" />
 
+    <TextView
+        android:id="@+id/postotak"
+        android:layout_width="146dp"
+        android:layout_height="62dp"
+        android:text="Test"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toEndOf="@+id/result"
+        app:layout_constraintTop_toBottomOf="@+id/classify"
+        app:layout_constraintVertical_bias="0.486" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
