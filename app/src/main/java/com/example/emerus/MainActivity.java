@@ -22,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
 import org.tensorflow.lite.support.common.FileUtil;
@@ -40,7 +39,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     Uri imageuri;
     Button buclassify;
-    TextView prediction;
     Button mCaptureBtn;
     ImageView mIMageView;
     Uri image_uri;
@@ -73,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -263,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
             }}
 
             result.setText(xAxisName);
-            postotak.setText(String.valueOf(barEntries) + "%");
+            postotak.setText(barEntries + "%");
 
 
             System.out.println(xAxisName);
