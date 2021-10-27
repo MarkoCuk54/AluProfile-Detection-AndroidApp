@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             System.out.println(xAxisName);
-            System.out.println(barEntries + " %");
+            System.out.println(barEntries + "%");
         }
     }
 
