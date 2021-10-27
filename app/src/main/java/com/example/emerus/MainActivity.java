@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
             ArrayList<BarEntry> barEntries = new ArrayList<>();
             for (int i = 0; i < label_probability.length; i++) {
-                if (label_probability[i] == maxValueInMap) {
+                if (label_probability[i] > 0.2) {
                     barEntries.add(new BarEntry(i, label_probability[i] * 100));
 
                 }
@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             // TO ADD THE VALUES IN X-AXIS
             ArrayList<String> xAxisName = new ArrayList<>();
             for (int i = 0; i < label.length; i++) {
-                if(label_probability[i] == maxValueInMap){
+                if(label_probability[i] > 0.2){
                 xAxisName.add(label[i]);
             }}
             barchart(mBarChart, barEntries, xAxisName);
