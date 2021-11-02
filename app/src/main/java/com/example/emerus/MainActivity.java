@@ -240,7 +240,10 @@ public class MainActivity extends AppCompatActivity {
         Map<String, Float> labeledProbability =
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
                         .getMapWithFloatValue();
-        float maxValueInMap = (Collections.max(labeledProbability.values()));
+
+
+         // float maxValueInMap = (Collections.max(labeledProbability.values()));
+
         Collection <String> allNames= labeledProbability.keySet();
         Collection<Float> allValues =  labeledProbability.values();
 
@@ -264,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             ;
             String xAxisNameHigh = "";
             for (int i = 0; i < label.length; i++) {
-                if(label_probability[i] == maxValueInMap){
+                if(label_probability[i] == max){
                 xAxisNameHigh = label[i];
             }}
 
