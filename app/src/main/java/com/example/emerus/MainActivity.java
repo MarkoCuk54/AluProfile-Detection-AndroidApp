@@ -39,6 +39,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -240,32 +241,41 @@ public class MainActivity extends AppCompatActivity {
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
                         .getMapWithFloatValue();
         float maxValueInMap = (Collections.max(labeledProbability.values()));
+        Collection <String> allNames= labeledProbability.keySet();
+        Collection<Float> allValues =  labeledProbability.values();
+
+        Float max = Collections.max(allValues);
+        int biggestValue =Math.round(max * 100);
+
 
         for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
-            //if (entry.getValue()==maxValueInMap) {
             String[] label = labeledProbability.keySet().toArray(new String[0]);
             Float[] label_probability = labeledProbability.values().toArray(new Float[0]);
 
+
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
-            int barEntries = 0;
+            /*
+            int barEntriesHigh = 0;
             for (int i = 0; i < label_probability.length; i++) {
-                if (label_probability[i] == maxValueInMap) barEntries = (int) (label_probability[i] * 100);
-            }
+                if (label_probability[i] == maxValueInMap) barEntriesHigh = (int) (label_probability[i] * 100);
+            } */
 
             // TO ADD THE VALUES IN X-AXIS
             ;
-            String xAxisName = "";
+            String xAxisNameHigh = "";
             for (int i = 0; i < label.length; i++) {
                 if(label_probability[i] == maxValueInMap){
-                xAxisName = label[i];
+                xAxisNameHigh = label[i];
             }}
 
-            result.setText(xAxisName);
-            postotak.setText(barEntries + "%");
+            result.setText(xAxisNameHigh);
+            postotak.setText(biggestValue + "%");
 
 
-            System.out.println(xAxisName);
-            System.out.println(barEntries + "%");
+          /*
+             System.out.println(xAxisNameHigh);
+            System.out.println(barEntriesHigh + " %");
+           */
         }
     }
 
