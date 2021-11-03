@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
 
             ArrayList<Float> PercentNum = new ArrayList<>();
             for (int i = 0; i < label_probability.length; i++) {
-                if (label_probability[i] > 0.0) {
+                if (label_probability[i] >= 0.0) {
                    PercentNum.add(label_probability[i]);
 
                 }}
