@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                         .getMapWithFloatValue();
 
 
-         float maxValueInMap = (max(labeledProbability.values()));
+        // float maxValueInMap = (max(labeledProbability.values()));
 
 
        // Collection <String> allNames= labeledProbability.keySet();
@@ -290,17 +290,13 @@ public class MainActivity extends AppCompatActivity {
 
             Collections.sort(PercentNum);
             Collections.reverse(PercentNum);
-           // System.out.println(PercentNum.get(0));
 
-
-
-
-            // TO ADD THE VALUES IN X-AXIS
+            // TO ADD THE VALUES In Percent
             ;
-                ArrayList<String> xAxisNames = new ArrayList<>();
-                for (int i = 0; i < label.length; i++) {
-                    if(label_probability[i] == PercentNum.get(0) ){
-                        xAxisNames.add(label[i]);;
+            ArrayList<String> xAxisNames = new ArrayList<>();
+            for (int i = 0; i < label.length; i++) {
+                if(label_probability[i] == PercentNum.get(0) ){
+                    xAxisNames.add(label[i]);;
             }}
 
             ArrayList<String> xAxisNames2nd = new ArrayList<>();
@@ -314,15 +310,6 @@ public class MainActivity extends AppCompatActivity {
                 if(label_probability[i] == PercentNum.get(2) ){
                     xAxisNames3nd.add(label[i]);;
                 }}
-
-
-
-
-
-            //System.out.println(xAxisNames);
-
-    ;
-
 
             result.setText(xAxisNames.get(0));
             postotak.setText(Math.round(PercentNum.get(0) * 100) + " %");
