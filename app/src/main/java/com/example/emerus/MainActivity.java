@@ -1,5 +1,8 @@
 package com.example.emerus;
 
+import static java.util.Arrays.sort;
+import static java.util.Collections.*;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,7 +23,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.mikephil.charting.data.BarEntry;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -39,6 +45,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -68,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private TensorProcessor probabilityProcessor;
     private Bitmap bitmap;
     private List<String> labels;
-
+    private Object Float;
 
 
     @SuppressLint("CutPasteId")
@@ -137,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         buclassify.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 try {
@@ -226,10 +235,15 @@ public class MainActivity extends AppCompatActivity {
         return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("ResourceAsColor")
+
+
     private void showresult() {
         TextView result = (TextView)findViewById(R.id.result);
         TextView postotak = (TextView) findViewById(R.id.postotak);
+        TextView result2 = (TextView)findViewById(R.id.result2);
+        TextView postotak2 = (TextView) findViewById(R.id.postotak2);
 
 
         try {
@@ -242,13 +256,20 @@ public class MainActivity extends AppCompatActivity {
                         .getMapWithFloatValue();
 
 
-         // float maxValueInMap = (Collections.max(labeledProbability.values()));
+         float maxValueInMap = (max(labeledProbability.values()));
 
-        Collection <String> allNames= labeledProbability.keySet();
-        Collection<Float> allValues =  labeledProbability.values();
 
-        Float max = Collections.max(allValues);
-        int biggestValue =Math.round(max * 100);
+       // Collection <String> allNames= labeledProbability.keySet();
+        // Collection<Float> allValues =  labeledProbability.values();
+
+       // System.out.println(allNames);
+        // System.out.println(allValues);
+
+
+
+       // Float max = Collections.max(allValues);
+
+       // int biggestValue =Math.round(max * 100);
 
 
         for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
@@ -257,28 +278,51 @@ public class MainActivity extends AppCompatActivity {
 
 
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
-            /*
-            int barEntriesHigh = 0;
+
+            ArrayList<Float> PercentNum = new ArrayList<>();
             for (int i = 0; i < label_probability.length; i++) {
-                if (label_probability[i] == maxValueInMap) barEntriesHigh = (int) (label_probability[i] * 100);
-            } */
+                if (label_probability[i] > 0.0) {
+                   PercentNum.add(label_probability[i]);
+
+                }}
+
+            Collections.sort(PercentNum);
+            Collections.reverse(PercentNum);
+            System.out.println(PercentNum.get(0));
+
+
+
 
             // TO ADD THE VALUES IN X-AXIS
             ;
-            String xAxisNameHigh = "";
-            for (int i = 0; i < label.length; i++) {
-                if(label_probability[i] == max){
-                xAxisNameHigh = label[i];
+                ArrayList<String> xAxisNames = new ArrayList<>();
+                for (int i = 0; i < label.length; i++) {
+                    if(label_probability[i] == PercentNum.get(0) ){
+                        xAxisNames.add(label[i]);;
             }}
 
-            result.setText(xAxisNameHigh);
-            postotak.setText(biggestValue + "%");
+            ArrayList<String> xAxisNames2nd = new ArrayList<>();
+            for (int i = 0; i < label.length; i++) {
+                if(label_probability[i] == PercentNum.get(1) ){
+                    xAxisNames2nd.add(label[i]);;
+                }}
 
 
-          /*
-             System.out.println(xAxisNameHigh);
-            System.out.println(barEntriesHigh + " %");
-           */
+
+
+
+            System.out.println(xAxisNames);
+
+    ;
+
+
+            result.setText(xAxisNames.get(0));
+            postotak.setText(Math.round(PercentNum.get(0) * 100) + " %");
+            result2.setText(xAxisNames2nd.get(0));
+            postotak2.setText(Math.round(PercentNum.get(1) * 100) + " %");
+
+
+
         }
     }
 
