@@ -244,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
         TextView postotak = (TextView) findViewById(R.id.postotak);
         TextView result2 = (TextView)findViewById(R.id.result2);
         TextView postotak2 = (TextView) findViewById(R.id.postotak2);
+        TextView result3 = (TextView)findViewById(R.id.result3);
+        TextView postotak3 = (TextView) findViewById(R.id.postotak3);
 
 
         try {
@@ -288,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
 
             Collections.sort(PercentNum);
             Collections.reverse(PercentNum);
-            System.out.println(PercentNum.get(0));
+           // System.out.println(PercentNum.get(0));
 
 
 
@@ -307,11 +309,17 @@ public class MainActivity extends AppCompatActivity {
                     xAxisNames2nd.add(label[i]);;
                 }}
 
+            ArrayList<String> xAxisNames3nd = new ArrayList<>();
+            for (int i = 0; i < label.length; i++) {
+                if(label_probability[i] == PercentNum.get(2) ){
+                    xAxisNames3nd.add(label[i]);;
+                }}
 
 
 
 
-            System.out.println(xAxisNames);
+
+            //System.out.println(xAxisNames);
 
     ;
 
@@ -320,6 +328,8 @@ public class MainActivity extends AppCompatActivity {
             postotak.setText(Math.round(PercentNum.get(0) * 100) + " %");
             result2.setText(xAxisNames2nd.get(0));
             postotak2.setText(Math.round(PercentNum.get(1) * 100) + " %");
+            result3.setText(xAxisNames3nd.get(0));
+            postotak3.setText(Math.round(PercentNum.get(2) * 100) + " %");
 
 
 
