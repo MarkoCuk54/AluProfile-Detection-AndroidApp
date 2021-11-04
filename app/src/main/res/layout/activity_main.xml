@@ -7,6 +7,52 @@
     android:background="@drawable/login_background"
     tools:context="com.example.emerus.MainActivity">
 
+    <!--// 50 default progress value-->
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar2"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="212dp"
+        android:layout_height="22dp"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/postotak2"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toEndOf="@+id/result2"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.502"
+        tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar3"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="212dp"
+        android:layout_height="22dp"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/simpleProgressBar2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/simpleProgressBar2"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.763"
+        tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="212dp"
+        android:layout_height="22dp"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/postotak"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toEndOf="@+id/result"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.214"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/result3"
@@ -64,22 +110,22 @@
         app:layout_constraintTop_toBottomOf="@+id/classify"
         app:layout_constraintVertical_bias="0.574" />
 
+
     <TextView
         android:id="@+id/Designed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/image"
+        android:autoLink="web"
+        android:text="Designed by Emerus"
         android:textColor="#03A9F4"
         android:textSize="12sp"
         android:textStyle="italic"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="2dp"
-        android:autoLink="web"
-        android:text="Designed by Emerus" >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp">
 
     </TextView>
-
 
     <ImageView
         android:id="@+id/image"
@@ -179,10 +225,9 @@
         app:layout_constraintVertical_bias="0.324" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/result"
         app:layout_constraintTop_toBottomOf="@+id/classify"

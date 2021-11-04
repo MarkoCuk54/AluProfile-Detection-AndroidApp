@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -313,6 +314,23 @@ public class MainActivity extends AppCompatActivity {
                 if(label_probability[i] == PercentNum.get(2) ){
                     xAxisNames3nd.add(label[i]);;
                 }}
+
+            //Progress Bar for the 3 items :
+
+            ProgressBar simpleProgressBar=(ProgressBar) findViewById(R.id.simpleProgressBar); // initiate the progress bar
+            simpleProgressBar.setMax(100); // 100 maximum value for the progress bar
+            simpleProgressBar.setProgress((int) (PercentNum.get(0) * 100));
+
+
+            ProgressBar simpleProgressBar2=(ProgressBar) findViewById(R.id.simpleProgressBar2); // initiate the progress bar
+            simpleProgressBar2.setMax(100); // 100 maximum value for the progress bar
+            simpleProgressBar2.setProgress((int) (PercentNum.get(1) * 100));
+
+            ProgressBar simpleProgressBar3=(ProgressBar) findViewById(R.id.simpleProgressBar3); // initiate the progress bar
+            simpleProgressBar3.setMax(100); // 100 maximum value for the progress bar
+            simpleProgressBar3.setProgress((int) (PercentNum.get(2) * 100));
+
+
 
             result.setText(xAxisNames.get(0));
             postotak.setText(Math.round(PercentNum.get(0) * 100) + " %");
