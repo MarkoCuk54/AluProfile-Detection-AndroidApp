@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +22,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Handler;
 
 import com.github.mikephil.charting.data.BarEntry;
 
@@ -41,7 +42,6 @@ import org.tensorflow.lite.support.image.ops.ResizeOp;
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
 import org.tensorflow.lite.support.label.TensorLabel;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     private Object Float;
+    private ProgressBar mProgressBar;
+    private int mProgressStatus = 0;
+    private TextView mLoadingText;
+    private Handler mHandler = new Handler();
 
 
     @SuppressLint("CutPasteId")
@@ -94,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         mCaptureBtn = findViewById(R.id.capture_image_btn);
         View textview = findViewById(R.id.Designed);
         textView = (TextView) findViewById(R.id.result);
+
 
 
         // Open Browser after Clicking on "Designed by Emerus" and open the Emerus Site on the browser.
@@ -343,6 +348,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
+
+
+
 
 
     @Override

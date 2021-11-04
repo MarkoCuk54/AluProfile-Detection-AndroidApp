@@ -54,6 +54,7 @@
         app:layout_constraintVertical_bias="0.214"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/result3"
         android:layout_width="100dp"
@@ -232,6 +233,7 @@
         app:layout_constraintBottom_toTopOf="@+id/result"
         app:layout_constraintTop_toBottomOf="@+id/classify"
         tools:layout_editor_absoluteX="0dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
