@@ -250,6 +250,9 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("ResourceAsColor")
 
+
+    //Buttons for details :
+    
     private void showButton(){
         Button detaljibtn = findViewById(R.id.detaljibtn);
         detaljibtn.setOnClickListener(new View.OnClickListener() {
