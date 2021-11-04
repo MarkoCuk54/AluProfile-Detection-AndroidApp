@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
                     xAxisNames3nd.add(label[i]);;
                 }}
 
-            //Progress Bar for the 3 items :
+            //Progress Bar for the 3 profiles :
 
             ProgressBar simpleProgressBar=(ProgressBar) findViewById(R.id.simpleProgressBar); // initiate the progress bar
             simpleProgressBar.setMax(100); // 100 maximum value for the progress bar
