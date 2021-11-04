@@ -346,9 +346,11 @@ public class MainActivity extends AppCompatActivity {
             simpleProgressBar3.setProgress((int) (PercentNum.get(2) * 100));
 
             //Progress Bar for the 3 profiles - height :
-            simpleProgressBar.setScaleY(3.5f);
-            simpleProgressBar2.setScaleY(3.5f);
-            simpleProgressBar3.setScaleY(3.5f);
+            simpleProgressBar.setScaleY(3.8f);
+            simpleProgressBar2.setScaleY(3.8f);
+            simpleProgressBar3.setScaleY(3.8f);
+
+
 
 
 
