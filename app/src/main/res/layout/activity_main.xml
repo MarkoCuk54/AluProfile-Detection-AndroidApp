@@ -12,10 +12,6 @@
         android:id="@+id/result3"
         android:layout_width="100dp"
         android:layout_height="30dp"
-<<<<<<< Updated upstream
-        android:text=""
-=======
->>>>>>> Stashed changes
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -30,10 +26,6 @@
         android:id="@+id/postotak2"
         android:layout_width="66dp"
         android:layout_height="29dp"
-<<<<<<< Updated upstream
-        android:text=""
-=======
->>>>>>> Stashed changes
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -48,10 +40,6 @@
         android:id="@+id/postotak3"
         android:layout_width="66dp"
         android:layout_height="29dp"
-<<<<<<< Updated upstream
-        android:text=""
-=======
->>>>>>> Stashed changes
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -65,10 +53,6 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="30dp"
-<<<<<<< Updated upstream
-        android:text=""
-=======
->>>>>>> Stashed changes
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -183,10 +167,6 @@
         android:id="@+id/postotak"
         android:layout_width="66dp"
         android:layout_height="29dp"
-<<<<<<< Updated upstream
-        android:text=""
-=======
->>>>>>> Stashed changes
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
