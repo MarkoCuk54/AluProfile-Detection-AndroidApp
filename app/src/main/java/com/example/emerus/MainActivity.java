@@ -250,7 +250,16 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("ResourceAsColor")
 
+    private void showButton(){
+        Button detaljibtn = findViewById(R.id.detaljibtn);
+        detaljibtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Details.class)) ;
 
+            }
+        });
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void showresult() {
@@ -367,20 +376,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-    private void showButton(){
-        Button detaljibtn = findViewById(R.id.detaljibtn);
-        detaljibtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Details.class)) ;
-
-            }
-        });
-    }
-
-
-    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
