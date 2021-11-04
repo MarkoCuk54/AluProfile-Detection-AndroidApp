@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     Button mCaptureBtn;
     ImageView mIMageView;
     Uri image_uri;
+    TextView textView;
     private MappedByteBuffer tfliteModel;
     private TensorImage inputImageBuffer;
     private int imageSizeX;
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         mIMageView = findViewById(R.id.image);
         mCaptureBtn = findViewById(R.id.capture_image_btn);
         View textview = findViewById(R.id.Designed);
+        textView = (TextView) findViewById(R.id.result);
 
 
         // Open Browser after Clicking on "Designed by Emerus" and open the Emerus Site on the browser.
@@ -188,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
         startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
+
     }
 
     @Override
@@ -322,6 +325,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
