@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.service.autofill.Transformation;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
@@ -28,7 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Handler;
+
 
 import com.github.mikephil.charting.data.BarEntry;
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     Uri imageuri;
     Button buclassify;
     Button mCaptureBtn;
+    Button detaljibtn;
     ImageView mIMageView;
     Uri image_uri;
     TextView textView;
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     private Object Float;
+
 
 
 
@@ -197,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
 
     }
+    
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -307,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
                     xAxisNames.add(label[i]);;
             }}
 
+
             ArrayList<String> xAxisNames2nd = new ArrayList<>();
             for (int i = 0; i < label.length; i++) {
                 if(label_probability[i] == PercentNum.get(1) ){
@@ -320,8 +325,6 @@ public class MainActivity extends AppCompatActivity {
                 }}
 
             //Progress Bar for the 3 profiles :
-
-
 
             ProgressBar simpleProgressBar=(ProgressBar) findViewById(R.id.simpleProgressBar); // initiate the progress bar
             simpleProgressBar.setMax(100); // 100 maximum value for the progress bar
@@ -350,11 +353,6 @@ public class MainActivity extends AppCompatActivity {
             simpleProgressBar2.setScaleY(3.8f);
             simpleProgressBar3.setScaleY(3.8f);
 
-
-
-
-
-
             result.setText(xAxisNames.get(0));
             postotak.setText(Math.round(PercentNum.get(0) * 100) + " %");
             result2.setText(xAxisNames2nd.get(0));
@@ -362,17 +360,18 @@ public class MainActivity extends AppCompatActivity {
             result3.setText(xAxisNames3nd.get(0));
             postotak3.setText(Math.round(PercentNum.get(2) * 100) + " %");
 
+            //Progress bar button
 
+            Button detaljibtn = findViewById(R.id.detaljibtn);
+            detaljibtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, Details.class)) ;
 
+                }
+            });
         }
     }
-
-
-
-
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

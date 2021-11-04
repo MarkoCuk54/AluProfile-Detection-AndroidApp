@@ -25,6 +25,9 @@
             android:name=".Login"
             android:exported="true" />
         <activity
+            android:name=".Details"
+            android:exported="true" />
+        <activity
             android:name=".Contact"
             android:exported="true" />
         <activity
