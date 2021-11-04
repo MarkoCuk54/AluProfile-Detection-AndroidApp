@@ -79,10 +79,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private List<String> labels;
     private Object Float;
-    private ProgressBar mProgressBar;
-    private int mProgressStatus = 0;
-    private TextView mLoadingText;
-    private Handler mHandler = new Handler();
+
 
 
     @SuppressLint("CutPasteId")
