@@ -22,7 +22,8 @@
         app:layout_constraintStart_toEndOf="@+id/result2"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.502"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:visibility="invisible"/>
 
     <ProgressBar
         android:id="@+id/simpleProgressBar3"
@@ -42,10 +43,11 @@
     <ProgressBar
         android:id="@+id/simpleProgressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="212dp"
-        android:layout_height="22dp"
+        android:layout_width="210dp"
+        android:layout_height="25dp"
         android:max="100"
         android:progress="0"
+        android:progressTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/postotak"
         app:layout_constraintHorizontal_bias="0.388"

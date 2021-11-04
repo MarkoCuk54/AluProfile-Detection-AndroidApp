@@ -332,6 +332,11 @@ public class MainActivity extends AppCompatActivity {
             simpleProgressBar3.setMax(100); // 100 maximum value for the progress bar
             simpleProgressBar3.setProgress((int) (PercentNum.get(2) * 100));
 
+            android.os.SystemClock.sleep(100);
+            android.os.SystemClock.setCurrentTimeMillis(100);
+            simpleProgressBar.setScaleY(3f);
+
+
 
 
             result.setText(xAxisNames.get(0));
