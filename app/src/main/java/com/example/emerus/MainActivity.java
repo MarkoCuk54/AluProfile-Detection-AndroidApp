@@ -251,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
 
 
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void showresult() {
         TextView result = (TextView)findViewById(R.id.result);
         TextView postotak = (TextView) findViewById(R.id.postotak);
@@ -361,17 +363,24 @@ public class MainActivity extends AppCompatActivity {
             postotak3.setText(Math.round(PercentNum.get(2) * 100) + " %");
 
             //Progress bar button
+            showButton();
 
-            Button detaljibtn = findViewById(R.id.detaljibtn);
-            detaljibtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, Details.class)) ;
-
-                }
-            });
         }
     }
+
+    private void showButton(){
+        Button detaljibtn = findViewById(R.id.detaljibtn);
+        detaljibtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Details.class)) ;
+
+            }
+        });
+    }
+
+
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
