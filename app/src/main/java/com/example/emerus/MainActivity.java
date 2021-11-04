@@ -4,6 +4,7 @@ import static java.util.Arrays.sort;
 import static java.util.Collections.*;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -319,17 +321,28 @@ public class MainActivity extends AppCompatActivity {
 
             //Progress Bar for the 3 profiles :
 
+
+
             ProgressBar simpleProgressBar=(ProgressBar) findViewById(R.id.simpleProgressBar); // initiate the progress bar
             simpleProgressBar.setMax(100); // 100 maximum value for the progress bar
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(simpleProgressBar, "progress", 0,Math.round(PercentNum.get(0) * 100));
+            progressAnimator.setDuration(2000);
+            progressAnimator.start();
             simpleProgressBar.setProgress((int) (PercentNum.get(0) * 100));
 
 
             ProgressBar simpleProgressBar2=(ProgressBar) findViewById(R.id.simpleProgressBar2); // initiate the progress bar
             simpleProgressBar2.setMax(100); // 100 maximum value for the progress bar
+            ObjectAnimator progressAnimator1 = ObjectAnimator.ofInt(simpleProgressBar2, "progress", 0,Math.round(PercentNum.get(1) * 100));
+            progressAnimator1.setDuration(1500);
+            progressAnimator1.start();
             simpleProgressBar2.setProgress((int) (PercentNum.get(1) * 100));
 
             ProgressBar simpleProgressBar3=(ProgressBar) findViewById(R.id.simpleProgressBar3); // initiate the progress bar
             simpleProgressBar3.setMax(100); // 100 maximum value for the progress bar
+            ObjectAnimator progressAnimator2 = ObjectAnimator.ofInt(simpleProgressBar3, "progress", 0,Math.round(PercentNum.get(2) * 100));
+            progressAnimator2.setDuration(1000);
+            progressAnimator2.start();
             simpleProgressBar3.setProgress((int) (PercentNum.get(2) * 100));
 
             //Progress Bar for the 3 profiles - height :
