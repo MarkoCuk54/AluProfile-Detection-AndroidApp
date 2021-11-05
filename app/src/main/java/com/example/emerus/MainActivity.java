@@ -193,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openCamera() {
-
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");
         values.put(MediaStore.Images.Media.TITLE, "From the Camera");
@@ -250,40 +249,12 @@ public class MainActivity extends AppCompatActivity {
         return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("ResourceAsColor")
 
 
     //Buttons for details :
     
-    private void showButton(){
-        Button detaljibtn = findViewById(R.id.detaljibtn);
-        detaljibtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Details.class)) ;
 
-            }
-        });
-
-            Button detaljibtn1 = findViewById(R.id.detaljibtn1);
-            detaljibtn1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, Details.class)) ;
-
-                }
-            });
-        Button detaljibtn2 = findViewById(R.id.detaljibtn2);
-        detaljibtn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Details.class)) ;
-
-            }
-        });
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void showresult() {
@@ -303,22 +274,6 @@ public class MainActivity extends AppCompatActivity {
         Map<String, Float> labeledProbability =
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
                         .getMapWithFloatValue();
-
-
-        // float maxValueInMap = (max(labeledProbability.values()));
-
-
-       // Collection <String> allNames= labeledProbability.keySet();
-        // Collection<Float> allValues =  labeledProbability.values();
-
-       // System.out.println(allNames);
-        // System.out.println(allValues);
-
-
-
-       // Float max = Collections.max(allValues);
-
-       // int biggestValue =Math.round(max * 100);
 
 
         for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
@@ -396,7 +351,34 @@ public class MainActivity extends AppCompatActivity {
             postotak3.setText(Math.round(PercentNum.get(2) * 100) + " %");
 
             //Progress bar button
-            showButton();
+            Button detaljibtn = findViewById(R.id.detaljibtn);
+            detaljibtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String value=xAxisNames.get(0);
+                    Intent i = new Intent(MainActivity.this, Details.class);
+                    i.putExtra("key",value);
+                    startActivity(i);;
+
+                }
+            });
+
+            Button detaljibtn1 = findViewById(R.id.detaljibtn1);
+            detaljibtn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, Details.class)) ;
+
+                }
+            });
+            Button detaljibtn2 = findViewById(R.id.detaljibtn2);
+            detaljibtn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, Details.class)) ;
+
+                }
+            });
 
         }
     }
