@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
     Button buclassify;
     Button mCaptureBtn;
     Button detaljibtn;
+    Button detaljibtn1;
+    Button detaljibtn2;
     ImageView mIMageView;
     Uri image_uri;
     TextView textView;
@@ -259,6 +261,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+            Button detaljibtn1 = findViewById(R.id.detaljibtn1);
+            detaljibtn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, Details.class)) ;
+
+                }
+            });
+        Button detaljibtn2 = findViewById(R.id.detaljibtn2);
+        detaljibtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Details.class)) ;
+
+            }
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

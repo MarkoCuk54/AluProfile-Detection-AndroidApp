@@ -34,7 +34,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="87dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="0dp"
         android:src="@drawable/pdf1"
         app:layout_constraintEnd_toEndOf="parent"

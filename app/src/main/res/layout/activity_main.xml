@@ -255,5 +255,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/detaljibtn1"
+        android:layout_width="397dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/image"
+        android:layout_marginBottom="108dp"
+        android:alpha="0.9"
+        android:background="@drawable/progressbar"
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/detaljibtn2"
+        android:layout_width="397dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/image"
+        android:layout_marginBottom="48dp"
+        android:alpha="0.9"
+        android:background="@drawable/progressbar"
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
