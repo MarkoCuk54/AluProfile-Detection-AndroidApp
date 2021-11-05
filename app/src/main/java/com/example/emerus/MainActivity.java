@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openCamera() {
+
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");
         values.put(MediaStore.Images.Media.TITLE, "From the Camera");
