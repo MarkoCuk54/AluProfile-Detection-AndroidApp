@@ -351,6 +351,8 @@ public class MainActivity extends AppCompatActivity {
             postotak3.setText(Math.round(PercentNum.get(2) * 100) + " %");
 
             //Progress bar button
+
+
             Button detaljibtn = findViewById(R.id.detaljibtn);
             detaljibtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -382,6 +384,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
+
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
