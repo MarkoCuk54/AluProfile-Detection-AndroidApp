@@ -369,16 +369,20 @@ public class MainActivity extends AppCompatActivity {
             detaljibtn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, Details.class)) ;
-
+                    String value=xAxisNames2nd.get(0);
+                    Intent i = new Intent(MainActivity.this, Details.class);
+                    i.putExtra("key",value);
+                    startActivity(i);;
                 }
             });
             Button detaljibtn2 = findViewById(R.id.detaljibtn2);
             detaljibtn2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, Details.class)) ;
-
+                    String value=xAxisNames3nd.get(0);
+                    Intent i = new Intent(MainActivity.this, Details.class);
+                    i.putExtra("key",value);
+                    startActivity(i);;
                 }
             });
 
@@ -387,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
