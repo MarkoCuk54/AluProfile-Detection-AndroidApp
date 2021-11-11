@@ -70,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
     Uri imageuri;
     Button buclassify;
     Button mCaptureBtn;
-    Button detaljibtn;
-    Button detaljibtn1;
-    Button detaljibtn2;
     ImageView mIMageView;
     Uri image_uri;
     TextView textView;
