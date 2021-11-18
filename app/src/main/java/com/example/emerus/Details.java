@@ -22,9 +22,6 @@ public class Details extends AppCompatActivity {
         String value = extras.getString("key");
         TextView profile = findViewById(R.id.profile);
         profile.setText(value);
-
-
-
-
+        
     }}
 
