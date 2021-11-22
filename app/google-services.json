@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "538149073682",
+    "project_id": "profilemerus",
+    "storage_bucket": "profilemerus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538149073682:android:4b12ff986983c9c16679cb",
+        "android_client_info": {
+          "package_name": "com.example.imageclassificationdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538149073682-lt5icca72gm3io028cg8v7gcnteb40o9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcuI0ddRa99eEgYj11Svtew4OdyXhbwFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538149073682-lt5icca72gm3io028cg8v7gcnteb40o9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
