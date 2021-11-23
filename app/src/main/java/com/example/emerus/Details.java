@@ -32,37 +32,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Details extends AppCompatActivity {
-
-
-
-    // private static final String TAG = "Details";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // Adding Profile to Firebase code :
-/*
-        // Create a new user with a first and last name
-        Map<String, Object> profiles = new HashMap<>();
-        profiles.put("profile", "PS1520");
-        profiles.put("link", "https://emerus1-my.sharepoint.com/:i:/r/personal/marko_cuk_emerus_eu/Documents/PS15020.png?csf=1&web=1&e=qHksiQ");
-
-// Add a new document with a generated ID
-        db.collection("profiles")
-                .add(profiles)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot agithdded with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                }); */
-
         super.onCreate(savedInstanceState);
         requestWindowFeature( Window.FEATURE_NO_TITLE );
         View decorView = getWindow().getDecorView();
@@ -72,14 +43,20 @@ public class Details extends AppCompatActivity {
         TextView profile = findViewById(R.id.profile);
         profile.setText(value);
 
-
+        // Getting data from Firebase
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Profili").document(value);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String link = (String) documentSnapshot.get("link");
-                System.out.println(link);
+                String vlasnik =(String) documentSnapshot.get("vlasnik");
+
+                TextView vlasniktxt;
+                vlasniktxt = findViewById(R.id.vlasniktxt);
+                vlasniktxt.setText(vlasnik);
+
+
                 ImageView crtez;
                 crtez = findViewById(R.id.image12);
                 Glide.with(Details.this).load(link).into(crtez);
