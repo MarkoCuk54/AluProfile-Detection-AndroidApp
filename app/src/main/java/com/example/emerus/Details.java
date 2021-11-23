@@ -71,7 +71,7 @@ public class Details extends AppCompatActivity {
 
         ImageView crtez;
         crtez = findViewById(R.id.image12);
-        Glide.with(this).load("https://www.linkpicture.com/q/PS15018-1.png").into(crtez);
+        Glide.with(this).load("https://www.linkpicture.com/q/PS15020.png").into(crtez);
 
 
 
