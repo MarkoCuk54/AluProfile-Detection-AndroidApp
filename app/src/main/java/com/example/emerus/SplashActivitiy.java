@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 
 import com.example.emerus.R;
+
+import java.util.Random;
 
 public class SplashActivitiy extends AppCompatActivity {
 
@@ -46,6 +49,13 @@ public class SplashActivitiy extends AppCompatActivity {
             }
 
         };
+
+        TextView tips =  findViewById(R.id.tips);
+        String[] arr={"Test1", "Test2", "Test3", "Test4", "Test5"};
+        Random r=new Random();
+        int randomNumber=r.nextInt(arr.length);
+        tips.setText(arr[randomNumber]);
+
         splashScreenStarter.start();
     }
 }
