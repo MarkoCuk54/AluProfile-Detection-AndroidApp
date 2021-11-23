@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String value=xAxisNames.get(0);
                     Intent i = new Intent(MainActivity.this, Details.class);
-                    i.putExtra("key",value);
+                    i.putExtra("profile_name",value);
                     startActivity(i);;
 
                 }
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String value=xAxisNames2nd.get(0);
                     Intent i = new Intent(MainActivity.this, Details.class);
-                    i.putExtra("key",value);
+                    i.putExtra("profile_name",value);
                     startActivity(i);;
                 }
             });
@@ -378,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String value=xAxisNames3nd.get(0);
                     Intent i = new Intent(MainActivity.this, Details.class);
-                    i.putExtra("key",value);
+                    i.putExtra("profile_name",value);
                     startActivity(i);;
                 }
             });

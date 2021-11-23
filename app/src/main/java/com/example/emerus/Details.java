@@ -39,7 +39,7 @@ public class Details extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         setContentView(R.layout.activity_details);
         Bundle extras = getIntent().getExtras();
-        String value = extras.getString("key");
+        String value = extras.getString("profile_name");
         TextView profile = findViewById(R.id.profile);
         profile.setText(value);
 
