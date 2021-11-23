@@ -7,14 +7,23 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -22,13 +31,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Details extends AppCompatActivity {
-    private static final String TAG = "Details";
-
-
+    // private static final String TAG = "Details";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         // Adding Profile to Firebase code :
 /*
         // Create a new user with a first and last name
@@ -52,7 +57,6 @@ public class Details extends AppCompatActivity {
                     }
                 }); */
 
-
         super.onCreate(savedInstanceState);
         requestWindowFeature( Window.FEATURE_NO_TITLE );
         View decorView = getWindow().getDecorView();
@@ -61,6 +65,17 @@ public class Details extends AppCompatActivity {
         String value = extras.getString("key");
         TextView profile = findViewById(R.id.profile);
         profile.setText(value);
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        ImageView crtez;
+        crtez = findViewById(R.id.image12);
+        Glide.with(this).load("https://www.linkpicture.com/q/PS15018-1.png").into(crtez);
+
+
+
+
     }
 }
 

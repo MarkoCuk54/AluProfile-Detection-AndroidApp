@@ -25,24 +25,7 @@
         android:textColor="@color/white"
         android:textSize="36dp" />
 
-    <ImageView
-        android:id="@+id/image12"
-        android:layout_width="wrap_content"
-        android:layout_height="644dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="0dp"
-        android:src="@drawable/pdf1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.113"
-        tools:ignore="ContentDescription" />
+
 
     <TextView
         android:id="@+id/profile"
@@ -54,6 +37,14 @@
         android:text="TextView"
         android:textColor="@color/white"
         android:textAlignment="center"/>
+
+    <ImageView
+        android:id="@+id/image12"
+        android:layout_width="376dp"
+        android:layout_height="707dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
 </RelativeLayout>
