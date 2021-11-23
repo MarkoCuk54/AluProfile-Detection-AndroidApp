@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 
-import com.example.emerus.R;
 
 import java.util.Random;
 
@@ -58,7 +57,7 @@ public class SplashActivitiy extends AppCompatActivity {
         // Slucajni Tip u vezi ALuminja u Splash Screenu :
 
         TextView tips =  findViewById(R.id.tips);
-        String[] arr={"Pozdrav Authorima !", "Neznamo dovoljno u Almuniji da bi vam dali Tipovi", "Loading Screen....", "Svi Serveri su zauzeti, molimo da poslušaš nešto od Beethovena na naš račun dok se ne oslobode... "};
+        String[] arr={"Pozdrav Authorima !", "Emerus App", "Loading Screen....", "Svi Serveri su zauzeti, molimo da poslušaš nešto od Beethovena na naš račun dok se ne oslobode... "};
         Random r=new Random();
         int randomNumber=r.nextInt(arr.length);
         tips.setText(arr[randomNumber]);
