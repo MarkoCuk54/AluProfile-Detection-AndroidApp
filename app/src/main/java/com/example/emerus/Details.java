@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,9 +32,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Details extends AppCompatActivity {
+
+
+
     // private static final String TAG = "Details";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         // Adding Profile to Firebase code :
 /*
         // Create a new user with a first and last name
@@ -68,10 +74,21 @@ public class Details extends AppCompatActivity {
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("Profili").document(value);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String link = (String) documentSnapshot.get("link");
+                System.out.println(link);
+                ImageView crtez;
+                crtez = findViewById(R.id.image12);
+                Glide.with(Details.this).load(link).into(crtez);
+            }
+        });
 
-        ImageView crtez;
-        crtez = findViewById(R.id.image12);
-        Glide.with(this).load("https://www.linkpicture.com/q/PS15020.png").into(crtez);
+
+
+
 
 
 
