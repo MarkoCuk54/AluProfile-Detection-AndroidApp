@@ -50,12 +50,17 @@ public class SplashActivitiy extends AppCompatActivity {
 
         };
 
+
+
+        splashScreenStarter.start();
+
+
+        // Slucajni Tip u vezi ALuminja u Splash Screenu :
+
         TextView tips =  findViewById(R.id.tips);
-        String[] arr={"Test1", "Test2", "Test3", "Test4", "Test5"};
+        String[] arr={"Pozdrav Authorima !", "Neznamo dovoljno u Almuniji da bi vam dali Tipovi", "Loading Screen....", "Svi Serveri su zauzeti, molimo da poslušaš nešto od Beethovena na naš račun dok se ne oslobode... "};
         Random r=new Random();
         int randomNumber=r.nextInt(arr.length);
         tips.setText(arr[randomNumber]);
-
-        splashScreenStarter.start();
     }
 }
