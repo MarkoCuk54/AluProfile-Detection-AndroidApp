@@ -131,10 +131,10 @@
         android:layout_below="@+id/vlasniktxt"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="66dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="68dp"
         android:layout_toEndOf="@+id/textView5"
-        android:text=""
+        android:text="Nema informacije"
         android:textAlignment="center"
         android:textColor="@color/white" />
 
