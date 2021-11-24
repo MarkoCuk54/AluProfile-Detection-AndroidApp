@@ -56,20 +56,10 @@ public class Details extends AppCompatActivity {
                 vlasniktxt = findViewById(R.id.vlasniktxt);
                 vlasniktxt.setText(vlasnik);
 
-
                 ImageView crtez;
                 crtez = findViewById(R.id.image12);
                 Glide.with(Details.this).load(link).into(crtez);
             }
         });
-
-
-
-
-
-
-
-
-    }
-}
+    }}
 
