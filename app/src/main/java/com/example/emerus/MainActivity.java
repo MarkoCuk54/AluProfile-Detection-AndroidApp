@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, IMAGE_CAPTUREW_CDOE);
 
     }
-    
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Buttons for details :
-    
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
