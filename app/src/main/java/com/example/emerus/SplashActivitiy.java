@@ -30,7 +30,7 @@ public class SplashActivitiy extends AppCompatActivity {
             public void run() {
                 try {
                     int delay = 0;
-                    while (delay < 3000) {
+                    while (delay < 4000) {
                         sleep(150);
                         delay = delay + 100;
                     }
@@ -48,7 +48,10 @@ public class SplashActivitiy extends AppCompatActivity {
 
         // Slucajni Tip u vezi Aluminja u Splash Screenu :
         TextView tips =  findViewById(R.id.tips);
-        String[] arr={"Pozdrav Authorima !", "Emerus App", "Loading Screen....", "Svi Serveri su zauzeti, molimo da poslušaš nešto od Beethovena na naš račun dok se ne oslobode... "};
+        String[] arr={"Kutovi bi u pravilu trebali biti zaobljeni ili polumjerni. Zaobljeni kutovi su mnogo jači i lakši za istiskivanje. Normalni polumjeri su 0,4 do 1,0 mm.",
+                        "Manje šupljina (ili udubljenja) u vašem dijelu može olakšati proizvodnju i smanjiti težinu metala, čime se smanjuju troškovi. Također pojednostavljuje dizajn matrice i može dovesti do niže cijene matrice.",
+                "Ako će vaš odjel zahtijevati bušenje, probijanje ili montažu nakon ekstruzije, možda ćete htjeti olakšati posao strojarima uključivanjem indeksnih linija kako biste osigurali točnost.",
+                "Kada dimenzionirate svoj dizajn, pokušajte odrediti dimenzije i bilo koje posebne tolerancije od metalne točke do metalne točke, a ne do središnje linije ili rupe."};
         Random r=new Random();
         int randomNumber=r.nextInt(arr.length);
         tips.setText(arr[randomNumber]);
