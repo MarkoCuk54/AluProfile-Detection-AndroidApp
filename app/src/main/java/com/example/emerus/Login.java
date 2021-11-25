@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
         loginbtn.setOnClickListener(v -> {
             if(username.getText().toString().equals("Admin") && password.getText().toString().equals("emerus")  || username.getText().toString().equals("Marko") && password.getText().toString().equals("emerus") || username.getText().toString().equals("Mario") && password.getText().toString().equals("emerus") ){
                 //correct
-                Toast.makeText(Login.this,"Dobrodošli " + username.getText() + ".",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this,"Dobrodošli " + username.getText() + "!",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
 
             }else
