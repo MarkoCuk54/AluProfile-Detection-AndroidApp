@@ -39,13 +39,13 @@ public class Details extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         setContentView(R.layout.activity_details);
         Bundle extras = getIntent().getExtras();
-        String value = extras.getString("profile_name");
+        String profile_name = extras.getString("profile_name");
         TextView profile = findViewById(R.id.profile);
-        profile.setText(value);
+        profile.setText(profile_name);
 
         // Getting data from Firebase
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Profili").document(value);
+        DocumentReference docRef = db.collection("Profili").document(profile_name);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
