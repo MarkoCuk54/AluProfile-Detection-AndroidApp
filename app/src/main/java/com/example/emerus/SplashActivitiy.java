@@ -26,6 +26,8 @@ public class SplashActivitiy extends AppCompatActivity {
         getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_splash_activitiy);
+
+        //Time of Splash Screen
         Thread splashScreenStarter = new Thread() {
             public void run() {
                 try {

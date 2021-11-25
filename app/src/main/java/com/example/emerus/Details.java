@@ -17,6 +17,8 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R.layout.activity_details);
+
+        // Getting var from MainActivity
         Bundle extras = getIntent().getExtras();
         String profile_name = extras.getString("profile_name");
         TextView profile = findViewById(R.id.profile);

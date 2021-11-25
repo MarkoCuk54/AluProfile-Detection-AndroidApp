@@ -30,8 +30,7 @@ public class Login extends AppCompatActivity {
         Button loginbtn = findViewById(R.id.loginbtn);
         Button supportbtn = findViewById(R.id.supportbtn);
 
-        //admin and admin
-
+        // Checking Login Data
         loginbtn.setOnClickListener(v -> {
             if(username.getText().toString().equals("Admin") && password.getText().toString().equals("emerus")  || username.getText().toString().equals("Marko") && password.getText().toString().equals("emerus") || username.getText().toString().equals("Mario") && password.getText().toString().equals("emerus") ){
                 //correct
