@@ -26,7 +26,7 @@
         android:id="@+id/tips"
         android:layout_width="385dp"
         android:layout_height="215dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="900dp"
         android:layout_marginBottom="400dp"
         android:shadowColor="#00ccff"
         android:shadowDx="1"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gifImageView"
+        app:layout_constraintTop_toTopOf="@+id/gifImageView"
         app:layout_constraintVertical_bias="0.481"
         tools:ignore="MissingConstraints" />
 
