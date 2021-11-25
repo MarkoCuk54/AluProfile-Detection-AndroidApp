@@ -20,19 +20,17 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature( Window.FEATURE_NO_TITLE );
-        View decorView = getWindow().getDecorView();
         setContentView(R.layout.activity_login);
-
-
         TextView username =(TextView) findViewById(R.id.username);
         TextView password =(TextView) findViewById(R.id.password);
-
         Button loginbtn = findViewById(R.id.loginbtn);
         Button supportbtn = findViewById(R.id.supportbtn);
 
         // Checking Login Data
         loginbtn.setOnClickListener(v -> {
-            if(username.getText().toString().equals("Admin") && password.getText().toString().equals("emerus")  || username.getText().toString().equals("Marko") && password.getText().toString().equals("emerus") || username.getText().toString().equals("Mario") && password.getText().toString().equals("emerus") ){
+            if(     username.getText().toString().equals("Admin") && password.getText().toString().equals("emerus")  ||
+                    username.getText().toString().equals("Marko") && password.getText().toString().equals("emerus") ||
+                    username.getText().toString().equals("Mario") && password.getText().toString().equals("emerus") ){
                 //correct
                 Toast.makeText(Login.this,"Dobrodošli " + username.getText() + "!",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
