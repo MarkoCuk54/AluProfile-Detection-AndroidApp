@@ -1,7 +1,11 @@
 package com.example.emerus;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,6 +42,19 @@ public class Details extends AppCompatActivity {
             ImageView crtez;
             crtez = findViewById(R.id.image12);
             Glide.with(Details.this).load(link).into(crtez);
+
+             Button button = findViewById(R.id.button);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse(link));
+                    startActivity(intent);
+                }
+            });
+
         });
     }}
 
