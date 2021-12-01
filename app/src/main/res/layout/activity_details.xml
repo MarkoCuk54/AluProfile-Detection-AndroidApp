@@ -93,7 +93,7 @@
         android:layout_below="@+id/image12"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="45dp"
         android:text="Vlasnik:"
         android:textColor="@color/white" />
 
@@ -115,7 +115,7 @@
         android:layout_below="@+id/image12"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="66dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="48dp"
         android:layout_toEndOf="@+id/textView3"
         android:text="Nema informacije"
@@ -137,17 +137,17 @@
         android:textColor="@color/white" />
 
     <Button
-        android:background="@drawable/gradient_normal_1"
         android:id="@+id/button"
         android:layout_width="219dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/backgroundodf"
+        android:layout_below="@+id/brzinapresanje"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="104dp"
         android:layout_marginBottom="22dp"
+        android:background="@drawable/gradient_normal_1"
         android:text="Skidaj Crtez" />
 </RelativeLayout>
 </ScrollView>
