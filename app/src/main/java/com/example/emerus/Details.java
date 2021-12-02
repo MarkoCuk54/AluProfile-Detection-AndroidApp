@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,7 +45,7 @@ public class Details extends AppCompatActivity {
             Glide.with(Details.this).load(link).into(crtez);
 
              Button button = findViewById(R.id.button);
-
+            if(link != ""){
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent();
@@ -52,8 +53,14 @@ public class Details extends AppCompatActivity {
                     intent.addCategory(Intent.CATEGORY_BROWSABLE);
                     intent.setData(Uri.parse(link));
                     startActivity(intent);
-                }
-            });
+                 }}
+            );}
+            if (link == null){
+                button.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Toast.makeText(Details.this, "Nažalost, nema ništa za preuzimanje. Pokušajte s drugim profilom.", Toast.LENGTH_LONG).show();
+                    }});
+            };
 
         });
     }}

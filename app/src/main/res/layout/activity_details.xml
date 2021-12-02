@@ -106,7 +106,9 @@
         android:layout_marginStart="47dp"
         android:layout_marginTop="71dp"
         android:text="Brzina Presanje:"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:translationZ="-1dp"
+        />
 
     <TextView
         android:id="@+id/vlasniktxt"
@@ -140,15 +142,16 @@
         android:id="@+id/button"
         android:layout_width="219dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/brzinapresanje"
+        android:layout_below="@+id/backgroundodf"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="104dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/gradient_normal_1"
-        android:text="Skidaj Crtez" />
+        android:text="Skidaj Crtez"
+        android:translationZ="0dp" />
 </RelativeLayout>
 </ScrollView>
 
